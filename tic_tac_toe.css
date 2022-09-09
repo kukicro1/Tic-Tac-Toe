@@ -1,0 +1,91 @@
+:root {
+    --mark-size: calc(100px * 0.9);
+}
+
+/* Game table setup */
+#ticTacToe {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gametable {
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 3px;
+    cursor: pointer;
+}
+
+.cell {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell.x,
+.cell.o {
+    cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.gametable.x .cell:not(.x):not(.o):hover::before,
+.gametable.x .cell:not(.x):not(.o):hover::after {
+    content: '';
+    width: calc(var(--mark-size) * .15);
+    height: calc(var(--mark-size));
+    background-color: black;
+    position: absolute;
+}
+
+.gametable.x .cell:not(.x):not(.o):hover::before,
+.gametable.x .cell:not(.x):not(.o):hover::after {
+    background-color: rgb(200, 200, 200);
+}
+
+.cell.x::before,
+.gametable.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.gametable.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.cell.o::after,
+.gametable.o .cell:not(.x):not(.o):hover::before,
+.gametable.o .cell:not(.x):not(.o):hover::after {
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+}
+
+.cell.o::before,
+.gametable.o .cell:not(.x):not(.o):hover::before {
+    width: calc(var(--mark-size));
+    height: calc(var(--mark-size));
+    background-color: black;
+}
+
+.cell.cell.o::after,
+.gametable.o .cell:not(.x):not(.o):hover::after {
+    width: calc(var(--mark-size)*.7);
+    height: calc(var(--mark-size)*.7);
+    background-color: white;
+}
+
+.gametable.o .cell:not(.x):not(.o):hover::before {
+    background-color: rgb(200, 200, 200);
+}
+
+/* Player setup interface */
+
+/* Winner announcement */
